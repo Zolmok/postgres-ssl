@@ -61,7 +61,14 @@ async fn main() -> Result<(), tokio_postgres::Error> {
         eprintln!("set_ca_file: {}", error);
     }
 
-    let connector = MakeTlsConnector::new(builder.build());
+    let mut connector = MakeTlsConnector::new(builder.build());
+
+    connector.set_callback(|config, _| {
+        config.set_verify_hostname(false);
+
+        Ok(())
+    });
+
     let connect = tokio_postgres::connect(&connection_string, connector);
 
     let (client, connection) = match connect.await {

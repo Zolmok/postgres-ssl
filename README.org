@@ -1,0 +1,7 @@
+* Postgres SSL
+
+  This is just an experimental project where I was having some trouble
+  connecting to postgress with an SSL certificate. The kind folks over
+  at the rust-lang users forum helped me figure out a solution:
+  https://users.rust-lang.org/t/trying-to-connect-to-postgres-with-tokio-and-ssl/69583
+  
